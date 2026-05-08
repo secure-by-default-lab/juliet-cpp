@@ -1,0 +1,26 @@
+# Dependabot config for juliet-cpp.
+#
+# C/C++ projects without package manifests still benefit from Dependabot
+# tracking the versions of GitHub Actions used in workflows.
+#
+# When we get to repos with actual package managers (npm for any JS, nuget
+# for the MVC app, cargo for Rust components, etc.) we add ecosystem entries here.
+
+version: 2
+updates:
+  # Keep GitHub Actions versions current. Without this, you can sit on a
+  # vulnerable actions/checkout@v3 forever and not know.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/London"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

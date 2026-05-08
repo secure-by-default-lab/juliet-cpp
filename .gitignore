@@ -1,0 +1,12 @@
+# Build artefacts
+*.o
+*.obj
+*.exe
+*.out
+src/a.out
+
+# Editor stuff
+.vscode/
+.idea/
+*.swp
+*~

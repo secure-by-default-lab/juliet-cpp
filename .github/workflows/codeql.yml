@@ -1,0 +1,33 @@
+# CodeQL scanning for juliet-cpp.
+#
+# Calls the org-level reusable workflow with C/C++ specific build settings.
+# Juliet test cases are individual .c files, so we use a simple Makefile
+# to compile them. CodeQL traces the compiler and extracts the source for analysis.
+
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Weekly run catches new CodeQL queries even if no code changed.
+    # Tuesday 03:17 UTC - random offset to avoid GitHub's hourly-spike traffic.
+    - cron: '17 3 * * 2'
+  workflow_dispatch:  # allow manual runs from the Actions tab
+
+jobs:
+  codeql-cpp:
+    name: CodeQL C/C++
+    uses: secure-by-default-lab/.github/.github/workflows/reusable-codeql.yml@main
+    with:
+      language: cpp
+      build-mode: manual
+      build-command: make -C src
+      runner: ubuntu-latest
+      query-suite: security-and-quality
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
