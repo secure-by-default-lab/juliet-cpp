@@ -22,7 +22,7 @@ The EU Cyber Resilience Act enters full enforcement in December 2027. Manufactur
 
 ## Author
 
-Built by Bruce, Product Security Lead and CRA-focused security testing practitioner.
+Built by Krupal, Product Security Lead and CRA-focused security testing practitioner.
 
 ---
 
